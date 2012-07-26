@@ -1,0 +1,8 @@
+<%- model_class = Item.new.class -%>
+<h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+
+<%= render "item_list" %>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_item_path,
+            :class => 'btn btn-primary' %>
