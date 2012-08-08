@@ -1,0 +1,15 @@
+seed database rake task
+
+FridgeItem belongs_to :item, belongs_to :fridge
+has_many through (quantity) fridge <-> items
+
+carrierwave photos upload+url, migracija za dodaten field
+
+i18n - config/application.rb
+https://raw.github.com/svenfuchs/rails-i18n/master/rails/locale/sl.yml
+format: ! '%n%u'
+
+users/omniauth
+devise
+
+scrapping items from http://www.mercator.si/trgovina/ nokogiri
