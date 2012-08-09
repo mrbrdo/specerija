@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+f = Fridge.create(name: "Hladilnik 1",
+	location: "Dnevna soba", capacity: 100)
+
+f.items.create(title: "Mleko",
+	price: 1.0)
