@@ -12,7 +12,6 @@
     <![endif]-->
 
     <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
   </head>
   <body>
 
@@ -27,9 +26,8 @@
           <a class="brand" href="<%= root_url %>">Specerija</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <li><%= link_to "Fridges", fridges_path  %></li>
+              <li><%= link_to "Items", items_path  %></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

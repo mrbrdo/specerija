@@ -1,4 +1,5 @@
-<%= form_for [@fridge, @item], :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @item, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= render partial: "shared/form_errors", :locals => { item: @item } %>
   <div class="control-group">
     <%= f.label :title, :class => 'control-label' %>
     <div class="controls">
@@ -15,6 +16,6 @@
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                fridge_items_path(@fridge), :class => 'btn' %>
+                items_path, :class => 'btn' %>
   </div>
 <% end %>

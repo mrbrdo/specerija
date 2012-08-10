@@ -1,11 +1,19 @@
-
 class ItemsController < ApplicationController
-  before_filter :find_fridge
+  # GET /items
+  # GET /items.json
+  def index
+    @items = Item.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @items }
+    end
+  end
 
   # GET /items/1
   # GET /items/1.json
   def show
-    @item = @fridge.items.find(params[:id])
+    @item = Item.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -16,7 +24,7 @@ class ItemsController < ApplicationController
   # GET /items/new
   # GET /items/new.json
   def new
-    @item = @fridge.items.build
+    @item = Item.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -26,17 +34,17 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
-    @item = @fridge.items.find(params[:id])
+    @item = Item.find(params[:id])
   end
 
   # POST /items
   # POST /items.json
   def create
-    @item = @fridge.items.build(params[:item])
+    @item = Item.new(params[:item])
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @fridge, notice: 'Item was successfully created.' }
+        format.html { redirect_to @item, notice: 'Item was successfully created.' }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }
@@ -48,11 +56,11 @@ class ItemsController < ApplicationController
   # PUT /items/1
   # PUT /items/1.json
   def update
-    @item = @fridge.items.find(params[:id])
+    @item = Item.find(params[:id])
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
-        format.html { redirect_to @fridge, notice: 'Item was successfully updated.' }
+        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -64,17 +72,12 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
-    @item = @fridge.items.find(params[:id])
+    @item = Item.find(params[:id])
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to @fridge }
+      format.html { redirect_to items_url }
       format.json { head :no_content }
     end
-  end
-
-private
-  def find_fridge
-    @fridge = Fridge.find(params[:fridge_id])
   end
 end

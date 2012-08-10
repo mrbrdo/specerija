@@ -15,7 +15,7 @@ class FridgesController < ApplicationController
   # GET /fridges/1.json
   def show
     @fridge = Fridge.find(params[:id])
-    @items = @fridge.items # for _item_list.html.erb
+    @items = @fridge.fridge_items # for _item_list.html.erb
 
     respond_to do |format|
       format.html # show.html.erb
