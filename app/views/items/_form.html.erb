@@ -1,4 +1,4 @@
-<%= form_for @item, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @item, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
   <%= render partial: "shared/form_errors", :locals => { item: @item } %>
   <div class="control-group">
     <%= f.label :title, :class => 'control-label' %>
@@ -10,6 +10,15 @@
     <%= f.label :price, :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :price, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :photo, :class => 'control-label' %>
+    <div class="controls">
+      <%= image_tag(@item.photo_url) if @item.photo? %>
+      <%= f.file_field :photo %><br>or provide an URL: 
+      <%= f.text_field :remote_photo_url %>
+      <%= f.hidden_field :photo_cache %>
     </div>
   </div>
 

@@ -25,3 +25,6 @@ gem 'jquery-rails'
 gem "twitter-bootstrap-rails"
 gem "pry"
 gem "thin"
+gem "carrierwave"
+gem "rmagick"
+gem 'devise'

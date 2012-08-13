@@ -4,9 +4,9 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:title) %></th>
+      <th>Photo</td>
       <th>Quantity</th>
       <th><%= model_class.human_attribute_name(:price) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -15,9 +15,9 @@
       <% item = fridge_item.item %>
       <tr>
         <td><%= link_to item.title, item %></td>
+        <td><%= image_tag item.photo_url(:thumb) %></td>
         <td><%= fridge_item.quantity %>
         <td><%= number_to_currency(item.price) %></td>
-        <td><%=l item.created_at %></td>
         <td>
           <%= link_to "Edit / TODO",
                       "#", :class => 'btn btn-mini' %>

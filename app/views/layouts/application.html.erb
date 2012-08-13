@@ -15,6 +15,7 @@
   </head>
   <body>
 
+    <%= flash[:notice] %>
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -28,6 +29,13 @@
             <ul class="nav">
               <li><%= link_to "Fridges", fridges_path  %></li>
               <li><%= link_to "Items", items_path  %></li>
+              <% if current_user.present? %>
+                <li><%= link_to "Welcome #{current_user.email}", edit_user_registration_path %></li>
+                <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+                <li><%= link_to "Add new user / todo", "#" %></li>
+              <% else %>
+                <li><%= link_to "Log in", new_user_session_path %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
