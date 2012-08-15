@@ -1,0 +1,25 @@
+<%= form_for [@fridge, @fridge_item], :html => { :class => 'form-horizontal' } do |f| %>
+  <%= render partial: "shared/form_errors", :locals => { item: @fridge_item } %>
+  <%= render partial: "shared/form_errors", :locals => { item: @fridge_item.item } %>
+
+  <div class="control-group">
+    <%= f.label :quantity, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :quantity, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <%= f.fields_for :item_attributes, @fridge_item.item, :html => { :class => 'form-horizontal' } do |item_form| %>
+    <div class="control-group">
+      <%= item_form.label :id, "Existing item", :class => 'control-label' %>
+      <div class="controls">
+        <%= item_form.collection_select :id, Item.all, :id, :title, include_blank: true %>
+      </div>
+    </div>
+    <%= render partial: "items/form_fields", :locals => { f: item_form } %>
+  <% end %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+  </div>
+<% end %>

@@ -5,6 +5,6 @@ class Item < ActiveRecord::Base
   has_many :fridge_items, :dependent => :destroy
   has_many :fridges, :through => :fridge_items
 
-  validates :title, :presence => true
+  validates :title, :presence => true, :uniqueness => true
   validates :price, :presence => true
 end

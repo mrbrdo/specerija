@@ -3,6 +3,21 @@ class FridgeItemsController < ApplicationController
 
   def new
     @fridge_item = @fridge.fridge_items.build
+    @fridge_item.build_item
+  end
+
+  def edit
+    @fridge_item = @fridge.fridge_items.find(params[:id])
+  end
+
+  def update
+    @fridge_item = @fridge.fridge_items.find(params[:id])
+
+    if @fridge_item.update_attributes(params[:fridge_item])
+      redirect_to @fridge, notice: 'Fridge item was successfully updated.'
+    else
+      render action: "edit"
+    end
   end
 
   def create

@@ -19,8 +19,8 @@
         <td><%= fridge_item.quantity %>
         <td><%= number_to_currency(item.price) %></td>
         <td>
-          <%= link_to "Edit / TODO",
-                      "#", :class => 'btn btn-mini' %>
+          <%= link_to "Edit",
+                      ["edit", @fridge, fridge_item], :class => 'btn btn-mini' %>
           <%= link_to "Remove",
                       [@fridge, fridge_item],
                       :method => :delete,

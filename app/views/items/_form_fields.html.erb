@@ -1,0 +1,21 @@
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :price, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :price, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :photo, :class => 'control-label' %>
+    <div class="controls">
+      <%= image_tag(f.object.photo_url) if f.object.photo? %>
+      <%= f.file_field :photo %><br>or provide an URL: 
+      <%= f.text_field :remote_photo_url %>
+      <%= f.hidden_field :photo_cache %>
+    </div>
+  </div>
