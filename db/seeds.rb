@@ -9,6 +9,9 @@
 Fridge.delete_all
 Item.delete_all
 FridgeItem.delete_all
+User.delete_all
+
+User.create!(email: "test@example.com", password: "test123", password_confirmation: "test123")
 
 f = Fridge.create(name: "Hladilnik 1",
 	location: "Dnevna soba", capacity: 100)
