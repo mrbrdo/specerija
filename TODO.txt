@@ -24,6 +24,8 @@ my wishlist (+ quantity, note)
 fridge item "remove one" (quantity=-1)
 
 scrapping items from http://www.mercator.si/trgovina/ nokogiri
+lib/mercator_scrapper
+rake task
 
 
 -- gems:
