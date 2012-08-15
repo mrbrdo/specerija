@@ -23,6 +23,7 @@ end
 gem 'jquery-rails'
 
 gem "twitter-bootstrap-rails"
+gem "bootstrap_flash_messages"
 gem "pry"
 gem "thin"
 gem "carrierwave"
