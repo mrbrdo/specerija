@@ -4,13 +4,21 @@ class FridgeItem < ActiveRecord::Base
   belongs_to :fridge
   belongs_to :item
 
-  # accepts_nested_attributes_for :item
   def item_attributes=(attrs)
     if attrs[:id].present?
       item.update_attributes(attrs) if attrs[:id].to_i == item.try(:id)
       self.item = Item.find(attrs[:id])
     else
       build_item(attrs)
+    end
+  end
+
+  def remove_one
+    self.quantity -= 1
+    if quantity > 0
+      save
+    else
+      destroy
     end
   end
 
@@ -21,7 +29,7 @@ class FridgeItem < ActiveRecord::Base
   
   # item must exist
   validate do |fridge_item|
-    unless fridge_item.item.valid?
+    if fridge_item.item.blank? || fridge_item.item.invalid?
       errors.add(:base, "Item must be valid")
     end
   end

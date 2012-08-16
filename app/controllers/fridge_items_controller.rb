@@ -37,7 +37,14 @@ class FridgeItemsController < ApplicationController
     redirect_to @fridge
   end
 
-  private
+  def remove_one
+    @fridge_item = @fridge.fridge_items.find(params[:fridge_item_id])
+    @fridge_item.remove_one
+
+    redirect_to @fridge, notice: "Removed one item from fridge."
+  end
+
+private
   def find_fridge
     @fridge = Fridge.find(params[:fridge_id])
   end
